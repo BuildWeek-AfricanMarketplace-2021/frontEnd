@@ -1,3 +1,16 @@
+
+import React from "react";
+
+const Login = () => {
+  return (
+    <div>
+      <h1>Login</h1>
+    </div>
+  );
+};
+
+export default Login;
+=======
 import React, { useState } from 'react';
 
 const initialFormValues = {
@@ -42,3 +55,4 @@ export default function Login(props){
         </div>
     )
 }
+
