@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const AddItems = () => {
@@ -9,3 +10,13 @@ const AddItems = () => {
 };
 
 export default AddItems;
+=======
+import React from 'react';
+
+export default function AddItems(){
+    return (
+        <div>
+            Add Items
+        </div>
+    )
+}
