@@ -30,3 +30,14 @@
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
+.signup-form {
+  max-width: 500px;
+  margin: 2rem auto;
+
+  padding: 2rem;
+}
+
+.signup-inputs {
+  display: block;
+  padding: 0.5rem 0;
+}

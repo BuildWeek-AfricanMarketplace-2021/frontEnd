@@ -3,7 +3,7 @@ import React from "react";
 const AddItems = () => {
   return (
     <div>
-      <h1>additems</h1>
+      <h1>Add Items</h1>
     </div>
   );
 };

@@ -22,8 +22,9 @@ export default function Signup() {
 
   //   const { push } = useHistory();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (evt) => {
+    setFormValues(initialFormValues);
+
     // axios
     //   .post(
     //     "***api link ***",
@@ -73,11 +74,11 @@ export default function Signup() {
   }, [formValues]);
 
   return (
-    <div>
+    <div className="signup-form">
       <h2>Sign up</h2>
       <h3>Create a African Marketplace account</h3>
       <div>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} c>
           <div>
             <input
               value={formValues.username}
