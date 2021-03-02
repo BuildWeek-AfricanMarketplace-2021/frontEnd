@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from 'react'
 import * as yup from 'yup'
 import styled from 'styled-components'
@@ -167,3 +168,16 @@ const Button = styled.button`
 
 
 export default AddItem
+=======
+import React from "react";
+
+const AddItems = () => {
+  return (
+    <div>
+      <h1>Add Items</h1>
+    </div>
+  );
+};
+
+export default AddItems;
+
