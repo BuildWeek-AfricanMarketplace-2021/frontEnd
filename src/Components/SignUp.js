@@ -1,4 +1,3 @@
-
 // import axios from "axios";
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
@@ -178,16 +177,3 @@ export default function Signup() {
     </div>
   );
 }
-=======
-import React from "react";
-
-const SignUp = () => {
-  return (
-    <div className="signup">
-      <h1>hello</h1>
-    </div>
-  );
-};
-
-export default SignUp;
-
