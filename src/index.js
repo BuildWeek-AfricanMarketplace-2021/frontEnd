@@ -1,18 +1,3 @@
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import AddItem from './Components/AddItems'
-
-ReactDOM.render(
-  // <React.StrictMode>
-    // <App />
-  // </React.StrictMode>,
-<AddItem/>,
-  document.getElementById('root')
-=======
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -21,11 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 import HomePage from "./Components/HomePage";
 import Login from "./Components/Login";
 import AddItems from "./Components/AddItems";
+import AddItem from "./Components/AddItems";
+
 ReactDOM.render(
+  // <React.StrictMode>
   <App />,
-
+  // </React.StrictMode>,
   document.getElementById("root")
-
 );
 
 // ReactDOM.render(
