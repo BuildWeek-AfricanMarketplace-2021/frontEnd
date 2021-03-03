@@ -18,6 +18,9 @@ const Nav = () => {
         <Link to="/signup">
           <li>Signup</li>
         </Link>
+        <Link to='/list'>
+          <li>List</li>
+        </Link>
       </ul>
     </div>
   );
