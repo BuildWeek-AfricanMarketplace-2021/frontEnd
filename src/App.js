@@ -1,4 +1,5 @@
 import "./App.css";
+import PrivateRoute from "./Components/utils/PrivateRoute";
 import Signup from "./Components/SignUp";
 import HomePage from "./Components/HomePage";
 import Login from "./Components/Login";
@@ -17,7 +18,7 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/additems" component={AddItems} />
-          <Route path='/list' component={ItemList} />
+          <PrivateRoute path="/list" component={ItemList} />
         </Switch>
       </div>
     </Router>

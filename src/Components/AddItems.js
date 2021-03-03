@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import styled from "styled-components";
-import dummyData from "./DummyData/dummyData"
 
 /* initial values for item form */
 const initialValues = {
@@ -49,18 +48,15 @@ function AddItem() {
       [name]: value,
     });
   };
-  const postItem = (newItem) => {
-    dummyData.push(newItem)
-    console.log(dummyData)
-   }
+  const postItem = (newItem) => {};
   const submitHandler = () => {
     const newItem = {
       itemName: formValues.itemName,
       location: formValues.location,
       price: formValues.price,
       description: formValues.description,
-    }
-    postItem(newItem)
+    };
+    postItem(newItem);
     setFormValues(initialValues);
   };
   // event handler

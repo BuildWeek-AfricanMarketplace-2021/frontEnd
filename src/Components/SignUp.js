@@ -1,8 +1,8 @@
-// import axios from "axios";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import schema from "./validation/signupSchema";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Signup() {
   const initialFormValues = {
@@ -19,24 +19,27 @@ export default function Signup() {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(true);
+  const { push } = useHistory();
 
   //   const { push } = useHistory();
 
-  const onSubmit = (evt) => {
+  const onSubmit = () => {
     setFormValues(initialFormValues);
 
-    // axios
-    //   .post(
-    //     "***api link ***",
-    //     formValues
-    //   )
-    //   .then((res) => {
-    //     setFormValues(initialFormValues);
-    //     push("/Login");
-    //   })
-    //   .catch((err) => {
-    //     debugger;
-    //   });
+    axios
+      .post(
+        "https://ptierie-africanmarketplace.herokuapp.com/users/user",
+        formValues
+      )
+      .then((res) => {
+        console.table(res.data, "data from post of sign up");
+        setFormValues(initialFormValues);
+        push("/login");
+      })
+      .catch((err) => {
+        console.log(err, "error submitting in signup");
+        setFormValues(initialFormValues);
+      });
   };
 
   const onChange = (e) => {
@@ -65,12 +68,9 @@ export default function Signup() {
   };
 
   useEffect(() => {
-    yup
-      .reach(schema)
-      .validate(formValues)
-      .then((valid) => {
-        setDisabled(!valid);
-      });
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
   }, [formValues]);
 
   return (
@@ -78,7 +78,7 @@ export default function Signup() {
       <h2>Sign up</h2>
       <h3>Create a African Marketplace account</h3>
       <div>
-        <form onSubmit={onSubmit} c>
+        <form onSubmit={onSubmit}>
           <div>
             <input
               value={formValues.username}
