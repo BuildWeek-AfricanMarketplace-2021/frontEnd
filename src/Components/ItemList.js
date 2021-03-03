@@ -1,5 +1,8 @@
 import React from 'react';
 
-export default function Listing(){
-    return null
+export default function ItemList(){
+    return ( 
+    <div>
+        Listing Page
+    </div>)
 }
