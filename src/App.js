@@ -18,7 +18,7 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/additems" component={AddItems} />
-          <PrivateRoute path="/list" component={ItemList} />
+          <Route path="/list" component={ItemList} />
         </Switch>
       </div>
     </Router>

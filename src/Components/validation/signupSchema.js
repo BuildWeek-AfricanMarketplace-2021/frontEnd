@@ -12,14 +12,14 @@ export default yup.object().shape({
     .max(20, "Password can not be more than 20 characters, "),
   firstName: yup.string().required("First Name Required, "),
   lastName: yup.string().required("Last Name Required, "),
-  email: yup.string().email().required("Valid Email Required, "),
-  city: yup.string().required("City Required, "),
-  country: yup.string().required("Country Required, "),
+  primaryemail: yup.string().email().required("Valid Email Required, "),
+  // city: yup.string().required("City Required, "),
+  // country: yup.string().required("Country Required, "),
 
-  primaryLanguage: yup
-    .string()
-    .oneOf(
-      ["english", "kinyarwanda", "swahili", "luganda", "lukiga"],
-      "Please select primary language "
-    ),
+  // primaryLanguage: yup
+  //   .string()
+  //   .oneOf(
+  //     ["english", "kinyarwanda", "swahili", "luganda", "lukiga"],
+  //     "Please select primary language "
+  //   ),
 });

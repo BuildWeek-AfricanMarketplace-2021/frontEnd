@@ -8,6 +8,7 @@ const initialValues = {
   location: "",
   price: "",
   description: "",
+  category: "",
 };
 
 const initialErrors = {
@@ -118,6 +119,14 @@ function AddItem() {
             onChange={change}
             placeholder="description"
             value={formValues.description}
+          />
+
+          <Input
+            type="text"
+            name="category"
+            onChange={change}
+            placeholder="category"
+            value={formValues.category}
           />
         </InputContainer>
         <Button disabled={disabled}>Add Item</Button>

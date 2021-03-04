@@ -8,7 +8,7 @@ export default function ItemList() {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("https://ptierie-africanmarketplace.herokuapp.com/roles/roles")
+      .get("https://ptierie-africanmarketplace.herokuapp.com/items/item")
       .then((res) => {
         setItemList(res.data);
         console.table(res.data, "list of items");
@@ -17,4 +17,10 @@ export default function ItemList() {
         console.log(err, "error getting items");
       });
   }, []);
+
+  return (
+    <div>
+      <h1>hello world</h1>
+    </div>
+  );
 }

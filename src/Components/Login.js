@@ -44,11 +44,32 @@ export default function Login(props) {
   const onSubmit = (evt) => {
     evt.preventDefault();
     setFormValues(initialFormValues);
+
     axios
       .post(
-        "https://ptierie-africanmarketplace.herokuapp.com/users/user",
-        formValues
+        "https://ptierie-africanmarketplace.herokuapp.com/login",
+        `grant_type=password&username=${formValues.username}&password=${formValues.password}`,
+        {
+          headers: {
+            // btoa is converting our client id/client secret into base64
+            Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
       )
+
+      // axios
+      //   .post(
+      //     "https://ptierie-africanmarketplace.herokuapp.com/users/user",
+      //     `grant_type=password&username=${formValues.username}&password=${formValues.password}`,
+      //     {
+      //       headers: {
+      //         //bota is converting the client id/ client secret into base 64
+      //         Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+      //         "Content-Type": "application/x-www-form-urlencoded",
+      //       },
+      //     }
+      //   )
       .then((res) => {
         console.table(res.data, "data from post of login");
         setFormValues(initialFormValues);

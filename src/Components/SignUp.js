@@ -6,14 +6,14 @@ import { useHistory } from "react-router-dom";
 
 export default function Signup() {
   const initialFormValues = {
-    city: "",
-    country: "",
-    email: "",
+    // city: "",
+    // country: "",
+    username: "",
+    password: "",
     firstName: "",
     lastName: "",
-    password: "",
-    primaryLanguage: "",
-    username: "",
+    primaryemail: "",
+    // primaryLanguage: "",
   };
 
   const [formValues, setFormValues] = useState(initialFormValues);
@@ -28,11 +28,12 @@ export default function Signup() {
 
     axios
       .post(
-        "https://ptierie-africanmarketplace.herokuapp.com/users/user",
+        "https://ptierie-africanmarketplace.herokuapp.com/createnewuser",
         formValues
       )
       .then((res) => {
-        console.table(res.data, "data from post of sign up");
+        debugger;
+        console.log(res.data, "data from post of sign up");
         setFormValues(initialFormValues);
         push("/login");
       })
@@ -93,7 +94,7 @@ export default function Signup() {
               value={formValues.password}
               onChange={onChange}
               name="password"
-              type="text"
+              type="password"
               placeholder="Password"
             />
           </div>
@@ -118,59 +119,21 @@ export default function Signup() {
           </div>
           <div>
             <input
-              value={formValues.email}
+              value={formValues.primaryemail}
               onChange={onChange}
-              name="email"
+              name="primaryemail"
               type="text"
-              placeholder="Email"
-            />
-          </div>
-          <div>
-            <input
-              value={formValues.city}
-              onChange={onChange}
-              name="city"
-              type="text"
-              placeholder="City"
-            />
-          </div>
-          <div>
-            <input
-              value={formValues.country}
-              onChange={onChange}
-              name="country"
-              type="text"
-              placeholder="Country"
+              placeholder="primarymail"
             />
           </div>
 
+          <button disabled={disabled}>Submit</button>
           <div>
-            <select
-              onChange={onChange}
-              value={formValues.primaryLanguage}
-              name="primaryLanguage"
-            >
-              <option value="">- Select Primary Language -</option>
-              <option value="english">- English -</option>
-              <option value="kinyarwanda">- Kinyarwanda -</option>
-              <option value="swahili">- Swahili -</option>
-              <option value="luganda">- Luganda -</option>
-              <option value="lukiga">- Lukiga -</option>
-            </select>
-            <div>
-              <button disabled={disabled}>Submit</button>
-              <div>
-                {formErrors.userName}
-                {formErrors.password}
-                {formErrors.firstName}
-                {formErrors.lastName}
-                {formErrors.email}
-                {formErrors.city}
-                {formErrors.country}
-
-                {formErrors.primaryLanguage}
-              </div>
-            </div>
+            {formErrors.userName}
+            {formErrors.password}
+            {formErrors.firstName}
+            {formErrors.lastName}
+            {formErrors.primaryemail}
           </div>
         </form>
       </div>
