@@ -21,7 +21,7 @@ export default function ItemList() {
 
   return (
     <div>
-      <h1>Available items</h1>
+      <h1 className="header">Available items</h1>
       <div className="cards">
         {/* <br></br> */}
 
