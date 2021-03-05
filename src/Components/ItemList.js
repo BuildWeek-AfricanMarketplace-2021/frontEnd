@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import ItemCard from "./ItemCard";
 import axiosWithAuth from "./utils/axiosWithAuth";
-
+import "../css/ItemCard.css";
 const initialStateValues = [];
 
 export default function ItemList() {
@@ -20,7 +21,14 @@ export default function ItemList() {
 
   return (
     <div>
-      <h1>hello world</h1>
+      <h1>Available items</h1>
+      <div className="cards">
+        {/* <br></br> */}
+
+        {itemList.map((item) => {
+          return <ItemCard details={item} key={item.class_id} />;
+        })}
+      </div>
     </div>
   );
 }

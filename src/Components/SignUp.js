@@ -23,16 +23,14 @@ export default function Signup() {
 
   //   const { push } = useHistory();
 
-  const onSubmit = () => {
-    setFormValues(initialFormValues);
-
+  const onSubmit = (e) => {
+    e.preventDefault();
     axios
       .post(
         "https://ptierie-africanmarketplace.herokuapp.com/createnewuser",
         formValues
       )
       .then((res) => {
-        debugger;
         console.log(res.data, "data from post of sign up");
         setFormValues(initialFormValues);
         push("/login");
@@ -41,6 +39,18 @@ export default function Signup() {
         console.log(err, "error submitting in signup");
         setFormValues(initialFormValues);
       });
+
+    // axios.post(
+    //   "https://ptierie-africanmarketplace.herokuapp.com/createnewuser",
+    //   `grant_type=password&username=${formValues.username}&password=${formValues.password}`,
+    //   {
+    //     headers: {
+    //       // btoa is converting our client id/client secret into base64
+    //       Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //     },
+    //   }
+    // );
   };
 
   const onChange = (e) => {
@@ -123,7 +133,7 @@ export default function Signup() {
               onChange={onChange}
               name="primaryemail"
               type="text"
-              placeholder="primarymail"
+              placeholder="primaryemail"
             />
           </div>
 

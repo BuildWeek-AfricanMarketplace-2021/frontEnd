@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import styled from "styled-components";
+import axiosWithAuth from "./utils/axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 /* initial values for item form */
 const initialValues = {
-  itemName: "",
+  name: "",
   location: "",
   price: "",
   description: "",
@@ -12,20 +14,22 @@ const initialValues = {
 };
 
 const initialErrors = {
-  itemName: "",
+  name: "",
   location: "",
   price: "",
   description: "",
 };
 function AddItem() {
+  const { push } = useHistory();
   const [formValues, setFormValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
   const [disabled, setDisabled] = useState(true);
   const formSchema = yup.object().shape({
-    itemName: yup.string().required("add a name"),
+    name: yup.string().required("add a name"),
     location: yup.string().required("select a location"),
     price: yup.string().required("needs to be in integers"),
     description: yup.string().required("add a description"),
+    category: yup.string().required("add a category"),
   });
   // handlers for onSubmit and onChange
   const changeHandler = (name, value) => {
@@ -52,10 +56,11 @@ function AddItem() {
   const postItem = (newItem) => {};
   const submitHandler = () => {
     const newItem = {
-      itemName: formValues.itemName,
+      name: formValues.name,
       location: formValues.location,
       price: formValues.price,
       description: formValues.description,
+      category: formValues.category,
     };
     postItem(newItem);
     setFormValues(initialValues);
@@ -67,6 +72,19 @@ function AddItem() {
   };
   const submit = (event) => {
     event.preventDefault();
+    axiosWithAuth()
+      .post(
+        "https://ptierie-africanmarketplace.herokuapp.com/items/item",
+        formValues
+      )
+      .then((res) => {
+        setFormValues(res.data);
+        push("/list");
+        console.log(res.data, "posting data");
+      })
+      .catch((err) => {
+        console.log(err, "error posting new item");
+      });
     submitHandler();
   };
 
@@ -81,13 +99,13 @@ function AddItem() {
       <form onSubmit={submit}>
         <h1>Add an Item</h1>
         <InputContainer>
-          <div>{errors.itemName}</div>
+          <div>{errors.name}</div>
           <Input
             type="text"
-            name="itemName"
+            name="name"
             onChange={change}
             placeholder="name"
-            value={formValues.itemName}
+            value={formValues.name}
           />
 
           <div>{errors.location}</div>

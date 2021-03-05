@@ -57,21 +57,9 @@ export default function Login(props) {
           },
         }
       )
-
-      // axios
-      //   .post(
-      //     "https://ptierie-africanmarketplace.herokuapp.com/users/user",
-      //     `grant_type=password&username=${formValues.username}&password=${formValues.password}`,
-      //     {
-      //       headers: {
-      //         //bota is converting the client id/ client secret into base 64
-      //         Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
-      //         "Content-Type": "application/x-www-form-urlencoded",
-      //       },
-      //     }
-      //   )
       .then((res) => {
         console.table(res.data, "data from post of login");
+        window.localStorage.setItem("token", res.data.access_token);
         setFormValues(initialFormValues);
         push("/list");
       })
